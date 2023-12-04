@@ -1,5 +1,9 @@
 #include<iostream>
 #include<string>
+#include<fstream>
+#include<vector>
+#include<cstdlib>
+#include<ctime>
 #define GREEN 0
 #define YELLOW 1
 #define RED 2
@@ -9,33 +13,83 @@ class wordle
 {
     private:
         std::string guess; //stores guessed word
-        const std::string selected_word = "hello"; 
-        //aile ko laagi hello, import file and add random word etaa pachi
+        std::string selected_word; 
+        std::vector<std::string> wordlist; //stores the list of possible words
 
         char illegal_letters[24]; // stores illegal letters
         short illegal_count; //stores no. of illegal letters
         short color[5]{RED}; //all color values initialized to 2
 
     public:
+        void set_answer()
+        {
+            //open text file
+            std::ifstream all_words("possiblewords.txt");
+
+            //check if file opened
+            if (all_words.is_open())
+            {
+                //copy words from the file to an array
+                std::string tempword;
+                while (all_words>>tempword)
+                {
+                    wordlist.push_back(tempword);
+                }
+                
+                //Close file
+                all_words.close();   
+
+                //Select random word
+                std::srand(std::time(nullptr));
+                int randomIndex = rand() % wordlist.size();
+                selected_word= wordlist[randomIndex];
+            }
+            else
+            {
+                std::cout<<"Error opening file! Terminating program";
+                exit(EXIT_FAILURE);
+            }
+        }
         void set_guess(std::string a)
         {
+            //capitalize all guesses
+            for (size_t i = 0; i < a.length(); ++i) 
+            {
+                a[i] = toupper(a[i]);
+            }
             guess = a;
         }
         
         bool check_exist() //function to check if word exists
         {
             //sammy ko search algorithm here 
-            
-            /*
-            if exists
+
+            int left=0;
+            int right=wordlist.size() -1;
+
+            while (left <=right)
             {
-                return true;
+                int mid= left + (right-left) / 2;
+
+                if (wordlist[mid]==selected_word)
+                {
+                    return true;
+                }
+
+                if (wordlist[mid]<selected_word)
+                {
+                    left=mid+1;
+                }
+
+                if (wordlist[mid]>selected_word)
+                {
+                    right=mid-1;
+                }
+
             }
-            else
-            {
-                return false;
-            }    
-            */
+
+            return false;
+            
         }
 
         bool check_legal() //function to check if word contains illegal letters
@@ -118,6 +172,7 @@ int main()
     //game loop
     wordle x;
     std::string guess;
+    x.set_answer();
     
     for(short attempt_count = 1; attempt_count <= 6; attempt_count++)
     {
