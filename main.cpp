@@ -16,8 +16,8 @@ class wordle
         std::string selected_word; 
         std::vector<std::string> wordlist; //stores the list of possible words
 
-        char illegal_letters[24]; // stores illegal letters
-        short illegal_count; //stores no. of illegal letters
+        char illegal_letters[24]{'0'}; // stores illegal letters
+        short illegal_count = 0; //stores no. of illegal letters
         short color[5]{RED}; //all color values initialized to 2
 
     public:
@@ -50,6 +50,7 @@ class wordle
                 exit(EXIT_FAILURE);
             }
         }
+
         void set_guess(std::string a)
         {
             //capitalize all guesses
@@ -64,32 +65,29 @@ class wordle
         {
             //sammy ko search algorithm here 
 
-            int left=0;
-            int right=wordlist.size() -1;
+            int left = 0;
+            int right = wordlist.size() - 1;
 
-            while (left <=right)
+            while (left <= right)
             {
-                int mid= left + (right-left) / 2;
+                int mid = left + (right - left) / 2;
 
-                if (wordlist[mid]==selected_word)
+                if (wordlist[mid] == guess)
                 {
                     return true;
                 }
 
-                if (wordlist[mid]<selected_word)
+                if (wordlist[mid] < guess)
                 {
-                    left=mid+1;
+                    left = mid + 1;
                 }
 
-                if (wordlist[mid]>selected_word)
+                if (wordlist[mid] > guess)
                 {
-                    right=mid-1;
+                    right = mid - 1;
                 }
-
             }
-
             return false;
-            
         }
 
         bool check_legal() //function to check if word contains illegal letters
@@ -140,7 +138,7 @@ class wordle
             //this loop finds the illegal letters
             for(short i = 0; i < 5; i++)
             {
-                if(color[i] == RED)
+                if (color[i] == RED)
                 {
                     illegal_letters[illegal_count] = guess[i];
                     illegal_count++;
@@ -176,11 +174,27 @@ int main()
     
     for(short attempt_count = 1; attempt_count <= 6; attempt_count++)
     {
-        std::cout << "Guess " << attempt_count << ":\t";
-        std::cin >> guess;
-        x.set_guess(guess);
-        x.check_legal();
-        x.check_exist();
+        do
+        {
+            std::cout << "Guess " << attempt_count << ":\t";
+            std::cin >> guess;
+            x.set_guess(guess);
+            if (attempt_count > 1)
+            {
+                if (!x.check_legal())
+                {
+                    std::cout << "Illegal letters! Guess again.\n\n";
+                    continue;
+                }
+            }
+            if (!x.check_exist())
+            {
+                std::cout << "Word does not exist! Guess again.\n\n";
+                continue;
+            }
+            break;    
+        } while (true);
+
         x.compare();
         x.redisplay();
 
@@ -190,8 +204,7 @@ int main()
             return 0;
         }
     }
-    std::cout << "YOU LOSE!!\n"; // display losing message
+    std::cout << "YOU LOSE!!\nTHE CORRECT WORD IS "; // display losing message
     x.display_correct();
     return 1;
 }
-
