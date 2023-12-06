@@ -16,8 +16,6 @@ class wordle
         std::string selected_word; 
         std::vector<std::string> wordlist; //stores the list of possible words
 
-        char illegal_letters[24]{'0'}; // stores illegal letters
-        short illegal_count = 0; //stores no. of illegal letters
         short color[5]{RED}; //all color values initialized to 2
 
     public:
@@ -31,7 +29,7 @@ class wordle
             {
                 //copy words from the file to an array
                 std::string tempword;
-                while (all_words>>tempword)
+                while (all_words >> tempword)
                 {
                     wordlist.push_back(tempword);
                 }
@@ -90,19 +88,9 @@ class wordle
             return false;
         }
 
-        bool check_legal() //function to check if word contains illegal letters
+        bool check_legal() //function to check if word contains illegal characters
         {   
-            for(short i = 0; i < 5; i++)
-            {
-                for(short j = 0; j < illegal_count; j++)
-                {
-                    if(guess[i] == illegal_letters[j])
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
+            /*nvm*/
         }
 
         bool check_win() //function to check if word is right
@@ -133,15 +121,6 @@ class wordle
                             color[i] = RED;                            
                         } 
                     }
-                }
-            }
-            //this loop finds the illegal letters
-            for(short i = 0; i < 5; i++)
-            {
-                if (color[i] == RED)
-                {
-                    illegal_letters[illegal_count] = guess[i];
-                    illegal_count++;
                 }
             }
         }
@@ -179,14 +158,7 @@ int main()
             std::cout << "Guess " << attempt_count << ":\t";
             std::cin >> guess;
             x.set_guess(guess);
-            if (attempt_count > 1)
-            {
-                if (!x.check_legal())
-                {
-                    std::cout << "Illegal letters! Guess again.\n\n";
-                    continue;
-                }
-            }
+        
             if (!x.check_exist())
             {
                 std::cout << "Word does not exist! Guess again.\n\n";
