@@ -23,6 +23,14 @@ signals:
 private slots:
     void on_pushButton_clicked();
 
+    void on_lineEdit_textChanged(const QString &arg1);
+
+    void on_lineEdit_2_textChanged(const QString &arg1);
+
+    void on_lineEdit_4_textChanged(const QString &arg1);
+
+    void on_lineEdit_3_textChanged(const QString &arg1);
+
 private:
     Ui::game *ui;
      MainWindow *mains; // Now we can use pointers to MainWindow without including the full definition
