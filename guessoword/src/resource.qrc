@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>valid_word.txt</file>
+    </qresource>
+    <qresource prefix="/icons"/>
+</RCC>
