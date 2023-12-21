@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+
 // #include "ui_mainwindow.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -27,14 +28,14 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
 
     // main layout --------------------------------------------------------
     QSpacerItem* spacer2 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
-    
+
     title = new QLabel("Wordle"); // title bar
     QFont font = title->font();
     font.setFamily("Consolas");
     font.setPointSize(50);
     font.setBold(true);
     title->setFont(font);
-    
+
 
     mainLayout->addWidget(title, 0, Qt::AlignCenter);
     mainLayout->addWidget(inputWindow, 0, Qt::AlignCenter);
@@ -42,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
     mainLayout->addItem(spacer2);
 
     // outer layout ---------------------------------------------------------
-    QSpacerItem* leftSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);    
+    QSpacerItem* leftSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
     QSpacerItem* rightSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     outerLayout->addItem(leftSpacer);

@@ -30,7 +30,7 @@ private:
     QLabel *title;
     InputWindow *inputWindow;
     KeyboardWindow *keyboardWindow;
-            
+
     Game *game;
 };
 

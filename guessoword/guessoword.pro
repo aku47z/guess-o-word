@@ -11,6 +11,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    homewindow.cpp \
     main.cpp \
     gui/mainwindow.cpp \
     gui/input_window.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     gui/cell.h \
     core/game_status.h \
     core/game.h \
+    homewindow.h
 
 #FORMS += \
 #    mainwindow.ui
@@ -35,4 +37,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    src/logo.qrc \
     src/resource.qrc
+
+FORMS += \
+    homewindow.ui
