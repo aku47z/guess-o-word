@@ -12,12 +12,14 @@ CONFIG += c++11
 
 SOURCES += \
     homewindow.cpp \
+    leaderboard.cpp \
     main.cpp \
     gui/mainwindow.cpp \
     gui/input_window.cpp \
     gui/keyboard_window.cpp \
     gui/cell.cpp \
     core/game.cpp \
+    statisticsmanager.cpp
 
 HEADERS += \
     gui/mainwindow.h \
@@ -26,7 +28,9 @@ HEADERS += \
     gui/cell.h \
     core/game_status.h \
     core/game.h \
-    homewindow.h
+    homewindow.h \
+    leaderboard.h \
+    statisticsmanager.h
 
 #FORMS += \
 #    mainwindow.ui
@@ -41,4 +45,7 @@ RESOURCES += \
     src/resource.qrc
 
 FORMS += \
-    homewindow.ui
+    homewindow.ui \
+    leaderboard.ui
+
+DISTFILES +=

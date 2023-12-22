@@ -3,6 +3,9 @@
 #include <QList>
 #include <QRandomGenerator>
 #include <QDebug>
+#include "statisticsmanager.h"
+
+extern StatisticsManager statsManager; //to update win statistic
 
 void Game::_cmpWord()
 {
@@ -186,11 +189,15 @@ int Game::handleEnter()
     for (int i = 0; i < 5; i++) gameStatus.prev_word_color[i] = gameStatus.cur_word_color[i];
     if (gameStatus.cur_word == gameStatus.ans_word) 
     {
+        statsManager.updateWins(); //update win stat
         gameStatus.is_game_won = true;
         gameStatus.is_game_over = true;
     }
-    if (gameStatus.cur_row == 5) 
+    if (gameStatus.cur_row == 5)
+    {
+        statsManager.updateCurrentStreak(); //reset current streak
         gameStatus.is_game_over = true;
+    }
     gameStatus.guessed_words.append(gameStatus.cur_word.toUpper());
     gameStatus.cur_row++;
     gameStatus.cur_col = 0;
