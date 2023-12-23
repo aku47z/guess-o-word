@@ -5,12 +5,11 @@
 #include <QLabel>
 #include "input_window.h"
 #include "keyboard_window.h"
-#include "message_window.h"
 #include "../core/game.h"
 
-// QT_BEGIN_NAMESPACE
-// namespace Ui { class MainWindow; }
-// QT_END_NAMESPACE
+//QT_BEGIN_NAMESPACE
+//namespace Ui { class MainWindow; }
+//QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
@@ -26,11 +25,9 @@ protected:
 
 private:
     // Ui::MainWindow *ui;
-    // QVBoxLayout *mainLayout;
     QLabel *title;
     InputWindow *inputWindow;
     KeyboardWindow *keyboardWindow;
-
     Game *game;
 };
 

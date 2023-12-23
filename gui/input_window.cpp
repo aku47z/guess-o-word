@@ -1,6 +1,6 @@
 #include "input_window.h"
 #include "keyboard_window.h"
-#include "message_window.h"
+
 #include <QDebug>
 
 InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWindow)
@@ -66,10 +66,10 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
     {
         int signal = game->handleBackspace();
         if (signal == 1)
-            {
-                Cells[game->gameStatus.cur_row][game->gameStatus.cur_col]->setLetter("");
-                _flushColor(0, game->gameStatus.cur_row, game->gameStatus.cur_col);
-            }
+        {
+            Cells[game->gameStatus.cur_row][game->gameStatus.cur_col]->setLetter("");
+            _flushColor(0, game->gameStatus.cur_row, game->gameStatus.cur_col);
+        }
     }
     else // enter
     {

@@ -31,23 +31,21 @@ private:
     void setLetterStyle(int pos_x, int pos_y, int width, int height, int font_size);
 
     QLabel *letterLabel;
-    int type; // 1: input, 2: keyboard, 3: enter, 4: backspace
+
+    int type; // 1: input, 2: keyboard
 
 public:
     Cell(QWidget *parent = nullptr);
-    ~Cell();
+     ~Cell();
 
     enum class Color {gray, black, green, yellow, darkGray};
     Color color;
 
     void setLetter(const QString &);
     QString getLetter() const;
+
     void changeColor();
     void setType(int type);
-
-signals:
-    void cellClicked(Cell *cell);
-
 };
 
 #endif // CELL_H

@@ -7,7 +7,7 @@ Cell::Cell(QWidget *parent)
     letterLabel = new QLabel("", this);
     color = Color::gray;
     setType(1);
-    
+
     QFont font = letterLabel->font();
     font.setFamily("Monospace");
     font.setBold(true);
@@ -15,6 +15,7 @@ Cell::Cell(QWidget *parent)
 
     letterLabel->show();
 }
+
 
 Cell::~Cell()
 {
@@ -31,15 +32,16 @@ QString Cell::getLetter() const
     return letterLabel->text();
 }
 
+
 QString Cell::getGridColor() const
 {
     switch (color)
     {
     case Color::gray:
-        {
-            if (type == 1) return "#ffffff";
-            else return "#d3d6da";
-        }
+    {
+        if (type == 1) return "#ffffff";
+        else return "#d3d6da";
+    }
     case Color::black: // only when type == 1
         return "#ffffff";
     case Color::green:
@@ -76,19 +78,10 @@ QString Cell::getLetterColor() const
 {
     switch (color)
     {
-    case Color::gray: 
-        {
-            if (type == 1) return "#ffffff"; // input is empty, set to invisible
-            else return "#000000";
-        }
-    case Color::black: // only when type == 1
+    case Color::gray:
         return "#000000";
-    case Color::green:
-        return "#ffffff";
-    case Color::yellow:
-        return "#ffffff";
-    case Color::darkGray:
-        return "#ffffff";
+    case Color::black:
+        return "#000000";
     default:
         return "#ffffff";
     }

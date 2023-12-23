@@ -5,6 +5,7 @@
 
 extern StatisticsManager statsManager;
 
+
 HomeWindow::HomeWindow(QWidget *parent)
     : QMainWindow(parent),
     ui(new Ui::HomeWindow),
@@ -33,7 +34,6 @@ void HomeWindow::on_pushButton_clicked()
     mainWindow->show();
 }
 
-
 void HomeWindow::on_pushButton_2_clicked()
 {
     leaderboard leaderboard;
@@ -47,4 +47,3 @@ void HomeWindow::on_pushButton_2_clicked()
     leaderboard.updateMaxStreakLabel(maxStreak);
     leaderboard.exec();
 }
-

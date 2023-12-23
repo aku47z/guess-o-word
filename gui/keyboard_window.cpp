@@ -14,12 +14,12 @@ KeyboardWindow::KeyboardWindow(QWidget *parent, Game *game, InputWindow *inputWi
         Cells[i]->setLetter(QString(keyMap[i]));
 
         int row, column;
+
         if (i < 10) { row = 0; column = i*2; } 
         else if (i < 19) { row = 1; column = (i-10)*2+1; } 
         else { row = 2; column = (i-19)*2+3; }
         gridLayout->addWidget(Cells[i], row, column, 1, 2);
     }
-    
     setLayout(gridLayout);
 }
 

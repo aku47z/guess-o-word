@@ -21,6 +21,7 @@ SOURCES += \
     core/game.cpp \
     statisticsmanager.cpp
 
+
 HEADERS += \
     gui/mainwindow.h \
     gui/input_window.h \
@@ -31,6 +32,7 @@ HEADERS += \
     homewindow.h \
     leaderboard.h \
     statisticsmanager.h
+
 
 #FORMS += \
 #    mainwindow.ui
@@ -49,3 +51,4 @@ FORMS += \
     leaderboard.ui
 
 DISTFILES +=
+
