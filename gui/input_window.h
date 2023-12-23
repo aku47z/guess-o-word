@@ -30,7 +30,6 @@ private:
 
     QGridLayout *gridLayout;
     Cell *Cells[6][5];
-
     Game *game;
     KeyboardWindow *keyboardWindow;
 };

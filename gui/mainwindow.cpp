@@ -27,10 +27,11 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
 
     // main layout --------------------------------------------------------
     QSpacerItem* spacer2 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
+      
     title = new QLabel("Guess-O-Word"); // title bar
     QFont font = title->font();
-    font.setFamily("Arial");
+    font.setFamily("Consolas");
+
     font.setPointSize(50);
     font.setBold(true);
     title->setFont(font);

@@ -18,11 +18,9 @@ public:
     QStringList getValidWords();
     void resetGame();
 
-
 private:
     void _cmpWord();
     int _isValidWord(); // 1: not valid, 2: valid
-
 };
 
 #endif // GAME_H

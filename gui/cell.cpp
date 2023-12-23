@@ -16,10 +16,22 @@ Cell::Cell(QWidget *parent)
     letterLabel->show();
 }
 
+
+Cell::~Cell()
+{
+    delete letterLabel;
+}
+
 void Cell::setLetter(const QString &letter)
 {
     letterLabel->setText(letter);
 }
+
+QString Cell::getLetter() const
+{
+    return letterLabel->text();
+}
+
 
 QString Cell::getGridColor() const
 {
@@ -68,10 +80,8 @@ QString Cell::getLetterColor() const
     {
     case Color::gray:
         return "#000000";
-
     case Color::black:
         return "#000000";
-
     default:
         return "#ffffff";
     }
@@ -87,7 +97,7 @@ void Cell::setStyle(int width, int height, int border_radius)
 
     setFixedSize(style.width, style.height);
     setStyleSheet(QString("background-color: %1; border-radius: %2px; border: 3px solid %3")
-                      .arg(style.color).arg(style.border_radius).arg(style.border_color));
+                  .arg(style.color).arg(style.border_radius).arg(style.border_color));
 }
 
 void Cell::setLetterStyle(int pos_x, int pos_y, int width, int height, int font_size)
@@ -100,7 +110,7 @@ void Cell::setLetterStyle(int pos_x, int pos_y, int width, int height, int font_
     letterStyle.font_size = font_size;
     letterLabel->setGeometry(letterStyle.pos_x, letterStyle.pos_y, width, height);
     letterLabel->setStyleSheet(QString("background-color: %1; border: 0px; color: %2; font-size: %3px")
-                                   .arg(style.color).arg(letterStyle.color).arg(letterStyle.font_size));
+                               .arg(style.color).arg(letterStyle.color).arg(letterStyle.font_size));
 }
 
 void Cell::changeColor()

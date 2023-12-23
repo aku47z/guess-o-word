@@ -7,6 +7,9 @@
 #include <QDebug>
 #include "homewindow.h"
 #include "ui_homewindow.h" // Include the generated UI header file
+#include "statisticsmanager.h"
+
+StatisticsManager statsManager;
 
 int main(int argc, char *argv[])
 {

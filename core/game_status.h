@@ -1,7 +1,10 @@
 #ifndef GAME_STATUS_H
 #define GAME_STATUS_H
 
+#include "load_data.h"
 #include "../gui/cell.h"
+#include <QStringList>
+
 
 #include <QFile>
 #include <QTextStream>
@@ -30,7 +33,7 @@ struct GameStatus
 
     QVector<QString> wordlist;
 
-    GameStatus()
+    GameStatus() 
     {
         resetGameStatus();
     }

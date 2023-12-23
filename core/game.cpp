@@ -3,12 +3,16 @@
 #include <QList>
 #include <QRandomGenerator>
 #include <QDebug>
+#include "statisticsmanager.h"
+
+extern StatisticsManager statsManager; //to update win statistic
+
 
 void Game::_cmpWord()
 {
     QString cur_word = gameStatus.cur_word;
     QString ans_word = gameStatus.ans_word;
-
+  
     for (short i = 0; i < 5; i++)
     {
         if (cur_word[i] == ans_word[i])
@@ -35,35 +39,6 @@ void Game::_cmpWord()
 
 int Game::_isValidWord() // 1: not valid, 2: valid
 {
-    /*if (!gameStatus.wordDataSet.validWordBucket[31].contains(word))
-        return 1;
-    if (gameStatus.game_mode == 0)
-        return 3;
-
-    for (int i = 0; i < 5; i++)
-        if (gameStatus.green_letter[i] != ' ')
-            if (word[i] != gameStatus.green_letter[i])
-                return 2;
-
-    for (int i = 0; i < 26; i++)
-    {
-        int occurrence = 0;
-        for (int j = 0; j < 5; j++)
-        {
-            if ((word[j].toLatin1() - 'a') == i) // check min occurence
-                occurrence++;
-            if (((gameStatus.impossible_position[i] >> (4-j)) & 1) == 1) //check impossible position
-                if ((word[j].toLatin1() - 'a') == i)
-                    return 2;
-        }
-        if (occurrence < gameStatus.letter_occurrence[i])
-            return 2;
-        if (gameStatus.has_fixed[i] && occurrence > gameStatus.letter_occurrence[i])
-            return 2;
-    }
-
-    return 3;*/
-
     QVector<QString> wordlist = gameStatus.wordlist;
 
     int left = 0;
@@ -133,13 +108,17 @@ int Game::handleEnter()
     gameStatus.has_game_started = true;
     _cmpWord();
     for (int i = 0; i < 5; i++) gameStatus.prev_word_color[i] = gameStatus.cur_word_color[i];
-    if (gameStatus.cur_word == gameStatus.ans_word)
+    if (gameStatus.cur_word == gameStatus.ans_word) 
     {
+        statsManager.updateWins(); //update win stat
         gameStatus.is_game_won = true;
         gameStatus.is_game_over = true;
     }
     if (gameStatus.cur_row == 5)
+    {
+        statsManager.updateCurrentStreak(); //reset current streak
         gameStatus.is_game_over = true;
+    }
     gameStatus.guessed_words.append(gameStatus.cur_word.toUpper());
     gameStatus.cur_row++;
     gameStatus.cur_col = 0;
