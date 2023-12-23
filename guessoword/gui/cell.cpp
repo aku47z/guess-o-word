@@ -7,7 +7,7 @@ Cell::Cell(QWidget *parent)
     letterLabel = new QLabel("", this);
     color = Color::gray;
     setType(1);
-    
+
     QFont font = letterLabel->font();
     font.setFamily("Monospace");
     font.setBold(true);
@@ -16,19 +16,9 @@ Cell::Cell(QWidget *parent)
     letterLabel->show();
 }
 
-Cell::~Cell()
-{
-    delete letterLabel;
-}
-
 void Cell::setLetter(const QString &letter)
 {
     letterLabel->setText(letter);
-}
-
-QString Cell::getLetter() const
-{
-    return letterLabel->text();
 }
 
 QString Cell::getGridColor() const
@@ -36,10 +26,10 @@ QString Cell::getGridColor() const
     switch (color)
     {
     case Color::gray:
-        {
-            if (type == 1) return "#ffffff";
-            else return "#d3d6da";
-        }
+    {
+        if (type == 1) return "#ffffff";
+        else return "#d3d6da";
+    }
     case Color::black: // only when type == 1
         return "#ffffff";
     case Color::green:
@@ -76,19 +66,12 @@ QString Cell::getLetterColor() const
 {
     switch (color)
     {
-    case Color::gray: 
-        {
-            if (type == 1) return "#ffffff"; // input is empty, set to invisible
-            else return "#000000";
-        }
-    case Color::black: // only when type == 1
+    case Color::gray:
         return "#000000";
-    case Color::green:
-        return "#ffffff";
-    case Color::yellow:
-        return "#ffffff";
-    case Color::darkGray:
-        return "#ffffff";
+
+    case Color::black:
+        return "#000000";
+
     default:
         return "#ffffff";
     }
@@ -104,7 +87,7 @@ void Cell::setStyle(int width, int height, int border_radius)
 
     setFixedSize(style.width, style.height);
     setStyleSheet(QString("background-color: %1; border-radius: %2px; border: 3px solid %3")
-                  .arg(style.color).arg(style.border_radius).arg(style.border_color));
+                      .arg(style.color).arg(style.border_radius).arg(style.border_color));
 }
 
 void Cell::setLetterStyle(int pos_x, int pos_y, int width, int height, int font_size)
@@ -117,7 +100,7 @@ void Cell::setLetterStyle(int pos_x, int pos_y, int width, int height, int font_
     letterStyle.font_size = font_size;
     letterLabel->setGeometry(letterStyle.pos_x, letterStyle.pos_y, width, height);
     letterLabel->setStyleSheet(QString("background-color: %1; border: 0px; color: %2; font-size: %3px")
-                               .arg(style.color).arg(letterStyle.color).arg(letterStyle.font_size));
+                                   .arg(style.color).arg(letterStyle.color).arg(letterStyle.font_size));
 }
 
 void Cell::changeColor()

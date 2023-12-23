@@ -9,8 +9,6 @@
 #include "../core/game.h"
 
 class KeyboardWindow;
-class MessageWindow;
-class RestartOption;
 
 class InputWindow : public QWidget
 {
@@ -23,7 +21,6 @@ public:
     void setKeyboardWindow(KeyboardWindow *keyboardWindow);
 
     void keyPressEvent(QKeyEvent *event);
-    void keyClickEvent(const QString & key);
 
     void resetInputWindow();
 
@@ -33,7 +30,7 @@ private:
 
     QGridLayout *gridLayout;
     Cell *Cells[6][5];
-    
+
     Game *game;
     KeyboardWindow *keyboardWindow;
 };

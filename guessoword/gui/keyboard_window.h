@@ -15,7 +15,7 @@ class KeyboardWindow : public QWidget
 
 public:
     KeyboardWindow(QWidget *parent = nullptr, Game *game = nullptr, InputWindow *inputWindow = nullptr);
-    ~KeyboardWindow(); 
+    ~KeyboardWindow();
 
     void setInputWindow(InputWindow *inputWindow);
     void flushKeyboard();

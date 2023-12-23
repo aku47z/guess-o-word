@@ -1,23 +1,22 @@
 #include "mainwindow.h"
-
 // #include "ui_mainwindow.h"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent, Game *game)
     : QMainWindow(parent), game(game)
-    // , ui(new Ui::MainWindow)
+    //, ui(new Ui::MainWindow)
 {
     // ui->setupUi(this);
-    setWindowTitle("wordle");
-    setStyleSheet("background-color: #ffffff");
+
+    setWindowTitle("Guess-O-Word");
+    setStyleSheet("background-color: #000000");
 
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
     QHBoxLayout* outerLayout =  new QHBoxLayout(centralWidget);
     QVBoxLayout* mainLayout = new QVBoxLayout();
-    QVBoxLayout* optionLayout = new QVBoxLayout();
 
     // main window components ----------------------------------------------
     inputWindow = new InputWindow(centralWidget, game, nullptr);
@@ -29,9 +28,9 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
     // main layout --------------------------------------------------------
     QSpacerItem* spacer2 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-    title = new QLabel("Wordle"); // title bar
+    title = new QLabel("Guess-O-Word"); // title bar
     QFont font = title->font();
-    font.setFamily("Consolas");
+    font.setFamily("Arial");
     font.setPointSize(50);
     font.setBold(true);
     title->setFont(font);
@@ -48,7 +47,6 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
 
     outerLayout->addItem(leftSpacer);
     outerLayout->addLayout(mainLayout);
-    outerLayout->addLayout(optionLayout);
     outerLayout->addItem(rightSpacer);
 
     centralWidget->setLayout(outerLayout);
@@ -56,7 +54,7 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
 
 MainWindow::~MainWindow()
 {
-    // delete ui;
+    //delete ui;
     delete title;
     delete inputWindow;
     delete keyboardWindow;
