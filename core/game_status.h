@@ -1,7 +1,11 @@
 #ifndef GAME_STATUS_H
 #define GAME_STATUS_H
 
+#include "load_data.h"
 #include "../gui/cell.h"
+#include <QStringList>
+
+
 #include <QFile>
 #include <QTextStream>
 #include <QVector>
@@ -10,6 +14,7 @@
 
 struct GameStatus
 {
+
     QString ans_word;
     int cur_row;
     int cur_col;
@@ -54,6 +59,11 @@ struct GameStatus
 
             // Close the file
             file.close();
+
+            // Select a random word
+            QRandomGenerator randomGenerator = QRandomGenerator::securelySeeded();
+            int randomIndex = randomGenerator.bounded(wordlist.size());
+            ans_word = wordlist[randomIndex];
         }
         else
         {
@@ -61,10 +71,6 @@ struct GameStatus
             exit(EXIT_FAILURE);
         }
 
-        // Select a random word
-        QRandomGenerator randomGenerator = QRandomGenerator::securelySeeded();
-        int randomIndex = randomGenerator.bounded(wordlist.size());
-        ans_word = wordlist[randomIndex];
 
         cur_row = 0;
         cur_col = 0;

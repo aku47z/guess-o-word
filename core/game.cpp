@@ -1,4 +1,8 @@
 #include "game.h"
+#include <QStringList>
+#include <QList>
+#include <QRandomGenerator>
+#include <QDebug>
 #include "statisticsmanager.h"
 
 extern StatisticsManager statsManager; //to update win statistic
