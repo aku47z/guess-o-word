@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Frame_1leaderboard-removebg-preview.png</file>
+    </qresource>
+</RCC>
