@@ -1,4 +1,5 @@
 #include "statisticsmanager.h"
+#include"core/game.h"
 
 StatisticsManager::StatisticsManager(QObject *parent) : QObject(parent), m_gamesPlayed(0), m_wins(0), m_maxStreak(0), m_currentStreak(0) {
     //constructor if needed
@@ -27,6 +28,22 @@ void StatisticsManager::updateCurrentStreak() {
     m_currentStreak=0;
 }
 
+void StatisticsManager::updateGameMode(){
+    easy_mode=!easy_mode;
+    gameInstancePtr->gameStatus.resetGameStatus();
+}
+
+QString StatisticsManager::getFilepath() const {
+    if (easy_mode)
+    {
+        return ":/valid_answer.txt";
+    }
+    else
+    {
+        return ":/valid_word.txt";
+    }
+}
+
 int StatisticsManager::getGamesPlayed() const {
     return m_gamesPlayed;
 }
@@ -41,4 +58,9 @@ int StatisticsManager::getMaxStreak() const {
 
 int StatisticsManager::getCurrentStreak() const {
     return m_currentStreak;
+
+}
+
+void StatisticsManager::passInstance(Game& game) {
+    gameInstancePtr = &game;
 }

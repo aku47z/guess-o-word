@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Game *game = new Game();
+    statsManager.passInstance(*game);
     // qDebug() << game->gameStatus.ans_word;
     MainWindow mainWindow(nullptr, game);
 

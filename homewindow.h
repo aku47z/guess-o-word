@@ -6,6 +6,7 @@
 #include "ui_homewindow.h"
 #include <gui/mainwindow.h>
 #include "core/game.h"
+#include "rules.h"
 
 class HomeWindow : public QMainWindow
 
@@ -24,8 +25,11 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_pushButton_4_clicked();
+
 private:
     Game *game;
+    bool isEasy = true;
 };
 
 #endif // HOMEWINDOW_H

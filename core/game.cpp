@@ -3,9 +3,9 @@
 #include <QList>
 #include <QRandomGenerator>
 #include <QDebug>
-#include "statisticsmanager.h"
 
-extern StatisticsManager statsManager; //to update win statistic
+
+
 
 
 void Game::_cmpWord()

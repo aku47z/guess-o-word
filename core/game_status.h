@@ -5,6 +5,7 @@
 #include "../gui/cell.h"
 #include <QStringList>
 
+extern StatisticsManager statsManager;
 
 #include <QFile>
 #include <QTextStream>
@@ -42,7 +43,10 @@ struct GameStatus
     void resetGameStatus()
     {
         // Open text file
-        QFile file(":/valid_word.txt");
+
+        //For difficulty
+        QFile file(statsManager.getFilepath());
+        qDebug()<<statsManager.getFilepath();
 
         // Check if the file opened successfully
         if (file.open(QIODevice::ReadOnly | QIODevice::Text))

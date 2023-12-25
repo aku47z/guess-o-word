@@ -1,7 +1,10 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "statisticsmanager.h"
 #include "game_status.h"
+
+extern StatisticsManager statsManager; //to update win statistic
 
 class Game
 {
