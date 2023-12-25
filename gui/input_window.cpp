@@ -118,7 +118,6 @@ void InputWindow::keyPressEvent(QKeyEvent *event)
     return;
 }
 
-
 void InputWindow::resetInputWindow()
 {
     for (int row = 0; row < 6; row++)

@@ -6,7 +6,6 @@
 #include "ui_homewindow.h"
 #include <gui/mainwindow.h>
 #include "core/game.h"
-#include "rules.h"
 
 class HomeWindow : public QMainWindow
 
