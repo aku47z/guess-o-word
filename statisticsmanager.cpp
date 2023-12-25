@@ -36,11 +36,11 @@ void StatisticsManager::updateGameMode(){
 QString StatisticsManager::getFilepath() const {
     if (easy_mode)
     {
-        return ":/valid_answer.txt";
+        return ":/valid_answers.txt";
     }
     else
     {
-        return ":/valid_word.txt";
+        return ":/valid_words.txt";
     }
 }
 
@@ -58,7 +58,17 @@ int StatisticsManager::getMaxStreak() const {
 
 int StatisticsManager::getCurrentStreak() const {
     return m_currentStreak;
+}
 
+int StatisticsManager::getDifficultyNumber() const{
+    if (easy_mode)
+    {
+        return 5;
+    }
+    else
+    {
+        return 6;
+    }
 }
 
 void StatisticsManager::passInstance(Game& game) {

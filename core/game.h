@@ -39,6 +39,7 @@ public:
     bool has_game_started;
     bool is_game_over;
     bool is_game_won;
+    int wordlength=statsManager.getDifficultyNumber();
 
     QVector<QString> wordlist;
     QVector<QString> answerlist;
@@ -71,7 +72,10 @@ public:
         }
 
         // Open text file
-        QFile file2(":/valid_answers.txt");
+        //For difficulty
+        QFile file2(statsManager.getFilepath());
+        //qDebug()<<statsManager.getFilepath();
+        //qDebug()<<statsManager.getDifficultyNumber();
 
         // Check if the file opened successfully
         if (file2.open(QIODevice::ReadOnly | QIODevice::Text))

@@ -26,6 +26,7 @@ public:
     int getMaxStreak() const;
     QString getFilepath() const;
     void passInstance(Game& game);
+    int getDifficultyNumber() const;
 
 private:
     int m_gamesPlayed;
