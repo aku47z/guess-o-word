@@ -1,6 +1,6 @@
 #include "homewindow.h"
 #include "gui/mainwindow.h"
-#include "leaderboard.h"
+#include "statistics.h"
 #include "statisticsmanager.h"
 #include "rules.h"
 

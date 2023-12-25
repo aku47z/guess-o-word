@@ -12,7 +12,6 @@ CONFIG += c++11
 
 SOURCES += \
     homewindow.cpp \
-    leaderboard.cpp \
     main.cpp \
     gui/mainwindow.cpp \
     gui/input_window.cpp \
@@ -20,6 +19,7 @@ SOURCES += \
     gui/cell.cpp \
     core/game.cpp \
     rules.cpp \
+    statistics.cpp \
     statisticsmanager.cpp
 
 
@@ -28,11 +28,10 @@ HEADERS += \
     gui/input_window.h \
     gui/keyboard_window.h \
     gui/cell.h \
-    core/game_status.h \
     core/game.h \
     homewindow.h \
-    leaderboard.h \
     rules.h \
+    statistics.h \
     statisticsmanager.h
 
 
@@ -55,8 +54,5 @@ RESOURCES += \
 
 FORMS += \
     homewindow.ui \
-    leaderboard.ui \
-    rules.ui
-
-DISTFILES +=
-
+    rules.ui \
+    statistics.ui

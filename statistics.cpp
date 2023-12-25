@@ -1,5 +1,5 @@
-#include "leaderboard.h"
-#include "ui_leaderboard.h"
+#include "statistics.h"
+#include "ui_statistics.h"
 
 leaderboard::leaderboard(QWidget *parent)
     : QDialog(parent)

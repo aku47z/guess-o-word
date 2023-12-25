@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
     // ui->setupUi(this);
 
     setWindowTitle("Guess-O-Word");
-    setStyleSheet("background-color: #000000");
+    setStyleSheet("background-color: #051d0f");
 
     QWidget* centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);

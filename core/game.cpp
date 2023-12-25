@@ -1,23 +1,16 @@
 #include "game.h"
-#include <QStringList>
-#include <QList>
-#include <QRandomGenerator>
-#include <QDebug>
 #include "statisticsmanager.h"
 
 extern StatisticsManager statsManager; //to update win statistic
 
 
 void Game::_cmpWord()
-{
-    QString cur_word = gameStatus.cur_word;
-    QString ans_word = gameStatus.ans_word;
-  
+{ 
     for (short i = 0; i < 5; i++)
     {
         if (cur_word[i] == ans_word[i])
         {
-            gameStatus.cur_word_color[i] = Cell::Color::green;
+            cur_word_color[i] = Cell::Color::green;
         }
         else
         {
@@ -25,12 +18,12 @@ void Game::_cmpWord()
             {
                 if (cur_word[i] == ans_word[j])
                 {
-                    gameStatus.cur_word_color[i] = Cell::Color::yellow;
+                    cur_word_color[i] = Cell::Color::yellow;
                     break;
                 }
                 else
                 {
-                    gameStatus.cur_word_color[i] = Cell::Color::darkGray;
+                    cur_word_color[i] = Cell::Color::darkGray;
                 }
             }
         }
@@ -39,12 +32,8 @@ void Game::_cmpWord()
 
 int Game::_isValidWord() // 1: not valid, 2: valid
 {
-    QVector<QString> wordlist = gameStatus.wordlist;
-
     int left = 0;
     int right = wordlist.size() - 1;
-
-    QString cur_word = gameStatus.cur_word;
 
     while (left <= right)
     {
@@ -71,26 +60,26 @@ int Game::_isValidWord() // 1: not valid, 2: valid
 int Game::handleKeyPress(const QString &keyText)
 {
     int signal = 0; // 0: do nothing, 1: add letter
-    if (gameStatus.is_game_over) return signal;
-    if (gameStatus.cur_col == 5) return signal;
+    if (is_game_over) return signal;
+    if (cur_col == 5) return signal;
 
     signal = 1;
-    gameStatus.cur_word += keyText;
-    gameStatus.cur_word_color[gameStatus.cur_col] = Cell::Color::black;
-    gameStatus.cur_col++;
+    cur_word += keyText;
+    cur_word_color[cur_col] = Cell::Color::black;
+    cur_col++;
     return signal;
 }
 
 int Game::handleBackspace()
 {
     int signal = 0; // 0: do nothing, 1: delete letter
-    if (gameStatus.is_game_over) return signal;
-    if (gameStatus.cur_col == 0) return signal;
+    if (is_game_over) return signal;
+    if (cur_col == 0) return signal;
 
     signal = 1;
-    gameStatus.cur_word_color[gameStatus.cur_col - 1] = Cell::Color::gray;
-    gameStatus.cur_word.remove(gameStatus.cur_col - 1, 1);
-    gameStatus.cur_col--;
+    cur_word_color[cur_col - 1] = Cell::Color::gray;
+    cur_word.remove(cur_col - 1, 1);
+    cur_col--;
     return signal;
 }
 
@@ -98,36 +87,31 @@ int Game::handleEnter()
 {
     // 0: do nothing, 1: word not valid, 2: word valid then enter
     int x = 0;
-    if (gameStatus.is_game_over) return x;
-    if (gameStatus.cur_col < 5) return x;
+    if (is_game_over) return x;
+    if (cur_col < 5) return x;
 
     x = _isValidWord();
     if (x != 2)
         return x;
 
-    gameStatus.has_game_started = true;
+    has_game_started = true;
     _cmpWord();
-    for (int i = 0; i < 5; i++) gameStatus.prev_word_color[i] = gameStatus.cur_word_color[i];
-    if (gameStatus.cur_word == gameStatus.ans_word) 
+    for (int i = 0; i < 5; i++) prev_word_color[i] = cur_word_color[i];
+    if (cur_word == ans_word)
     {
         statsManager.updateWins(); //update win stat
-        gameStatus.is_game_won = true;
-        gameStatus.is_game_over = true;
+        is_game_won = true;
+        is_game_over = true;
     }
-    if (gameStatus.cur_row == 5)
+    if (cur_row == 5)
     {
         statsManager.updateCurrentStreak(); //reset current streak
-        gameStatus.is_game_over = true;
+        is_game_over = true;
     }
-    gameStatus.guessed_words.append(gameStatus.cur_word.toUpper());
-    gameStatus.cur_row++;
-    gameStatus.cur_col = 0;
-    gameStatus.cur_word = "";
-    for (int i = 0; i < 5; i++) gameStatus.cur_word_color[i] = Cell::Color::gray;
+    guessed_words.append(cur_word.toUpper());
+    cur_row++;
+    cur_col = 0;
+    cur_word = "";
+    for (int i = 0; i < 5; i++) cur_word_color[i] = Cell::Color::gray;
     return x;
-}
-
-void Game::resetGame()
-{
-    gameStatus.resetGameStatus();
 }

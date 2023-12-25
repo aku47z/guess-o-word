@@ -6,7 +6,6 @@ Cell::Cell(QWidget *parent)
 {
     letterLabel = new QLabel("", this);
     color = Color::gray;
-    setType(1);
 
     QFont font = letterLabel->font();
     font.setFamily("Monospace");
@@ -117,19 +116,4 @@ void Cell::changeColor()
 {
     setStyle(style.width, style.height, style.border_radius);
     setLetterStyle(letterStyle.pos_x, letterStyle.pos_y, letterStyle.width, letterStyle.height, letterStyle.font_size);
-}
-
-void Cell::setType(int type) // 1: input, 2: keyboard
-{
-    this->type = type;
-    if (type == 1)
-    {
-        setStyle(50, 50, 0);
-        setLetterStyle(20, 15, 20, 20, 15);
-    }
-    else if (type == 2)
-    {
-        setStyle(40, 50, 8);
-        setLetterStyle(13, 10, 30, 30, 15);
-    }
 }

@@ -9,16 +9,22 @@ KeyboardWindow::KeyboardWindow(QWidget *parent, Game *game, InputWindow *inputWi
 
     for (int i = 0; i < 26; i++)
     {
-        Cells[i] = new Cell(this);
-        Cells[i]->setType(2);
-        Cells[i]->setLetter(QString(keyMap[i]));
-
-        int row, column;
-
-        if (i < 10) { row = 0; column = i*2; } 
-        else if (i < 19) { row = 1; column = (i-10)*2+1; } 
-        else { row = 2; column = (i-19)*2+3; }
-        gridLayout->addWidget(Cells[i], row, column, 1, 2);
+        keys[i] = new Cell(this);
+        keys[i]->setLetter(QChar(keyMap[i]));
+        keys[i]->setStyle(40, 50, 8);
+        keys[i]->setLetterStyle(13, 10, 30, 30, 15);
+        if (i < 10)
+        {
+            gridLayout->addWidget(keys[i], 0, i * 2, 1, 2);
+        }
+        else if (i < 19)
+        {
+            gridLayout->addWidget(keys[i], 1, (i - 10) * 2 + 1, 1, 2);
+        }
+        else
+        {
+            gridLayout->addWidget(keys[i], 2, (i - 19) * 2 + 3, 1, 2);
+        }
     }
     setLayout(gridLayout);
 }
@@ -27,7 +33,7 @@ KeyboardWindow::~KeyboardWindow()
 {
     for (int i = 0; i < 26; ++i)
     {
-        delete Cells[i];
+        delete keys[i];
     }
 }
 
@@ -40,8 +46,8 @@ void KeyboardWindow::flushKeyboard()
 {
     for (int i = 0; i < 26; i++)
     {
-        Cells[i]->color = game->gameStatus.letter_color[KeyMap2[i]];
-        Cells[i]->changeColor();
+        keys[i]->color = game->letter_color[KeyMap2[i]];
+        keys[i]->changeColor();
     }
 }
 
@@ -49,7 +55,7 @@ void KeyboardWindow::resetKeyboard()
 {
     for (int i = 0; i < 26; i++)
     {
-        Cells[i]->color = Cell::Color::gray;
-        Cells[i]->changeColor();
+        keys[i]->color = Cell::Color::gray;
+        keys[i]->changeColor();
     }
 }

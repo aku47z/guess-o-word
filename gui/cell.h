@@ -19,7 +19,7 @@ private:
     } style;
     QString getGridColor() const;
     QString getBorderColor() const;
-    void setStyle(int width, int height, int border_radius);
+
     struct LetterStyle
     {
         int pos_x, pos_y;
@@ -28,7 +28,6 @@ private:
         int font_size;
     } letterStyle;
     QString getLetterColor() const;
-    void setLetterStyle(int pos_x, int pos_y, int width, int height, int font_size);
 
     QLabel *letterLabel;
 
@@ -41,11 +40,11 @@ public:
     enum class Color {gray, black, green, yellow, darkGray};
     Color color;
 
+    void setStyle(int width, int height, int border_radius);
+    void setLetterStyle(int pos_x, int pos_y, int width, int height, int font_size);
     void setLetter(const QString &);
     QString getLetter() const;
-
     void changeColor();
-    void setType(int type);
 };
 
 #endif // CELL_H

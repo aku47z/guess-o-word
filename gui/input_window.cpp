@@ -17,7 +17,8 @@ InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWi
         for (int col = 0; col < 5; col++)
         {
             Cells[row][col] = new Cell(this);
-
+            Cells[row][col] -> setStyle(50, 50, 0);
+            Cells[row][col] -> setLetterStyle(20, 15, 20, 20, 15);
             gridLayout->addWidget(Cells[row][col], row, col);
         }
     }
@@ -44,9 +45,9 @@ void InputWindow::setKeyboardWindow(KeyboardWindow *keyboardWindow)
 void InputWindow::_flushColor(int signal, int row, int col) // signal: 0: flush current row, 1: flush previous row
 {
     if (signal == 0)
-        Cells[row][col]->color = game->gameStatus.cur_word_color[col];
+        Cells[row][col]->color = game->cur_word_color[col];
     else if (signal == 1)
-        Cells[row][col]->color = game->gameStatus.prev_word_color[col];
+        Cells[row][col]->color = game->prev_word_color[col];
     Cells[row][col]->changeColor();
     return;
 }
@@ -58,8 +59,8 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
         int signal = game->handleKeyPress(key.toLower());
         if (signal == 1)
         {
-            Cells[game->gameStatus.cur_row][game->gameStatus.cur_col - 1]->setLetter(key.toUpper());
-            _flushColor(0, game->gameStatus.cur_row, game->gameStatus.cur_col - 1);
+            Cells[game->cur_row][game->cur_col - 1]->setLetter(key.toUpper());
+            _flushColor(0, game->cur_row, game->cur_col - 1);
         }
     }
     else if (_signal == 2) // backspace
@@ -67,8 +68,8 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
         int signal = game->handleBackspace();
         if (signal == 1)
         {
-            Cells[game->gameStatus.cur_row][game->gameStatus.cur_col]->setLetter("");
-            _flushColor(0, game->gameStatus.cur_row, game->gameStatus.cur_col);
+            Cells[game->cur_row][game->cur_col]->setLetter("");
+            _flushColor(0, game->cur_row, game->cur_col);
         }
     }
     else // enter
@@ -79,18 +80,18 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
         {
             for (int i = 0; i < 5; i++)
             {
-                _flushColor(1, game->gameStatus.cur_row - 1, i);
+                _flushColor(1, game->cur_row - 1, i);
                 keyboardWindow->flushKeyboard();
             }
         }
 
         /*
-        if (game->gameStatus.is_game_over)
+        if (game->is_game_over)
         {
-            if (game->gameStatus.is_game_won)
+            if (game->is_game_won)
                 messageWindow->setMessage("You win!");
             else
-                messageWindow->setMessage("You lose! The correct word is: " + game->gameStatus.ans_word.toUpper());
+                messageWindow->setMessage("You lose! The correct word is: " + game->ans_word.toUpper());
         }
         */
 
