@@ -6,7 +6,7 @@
 #include <QApplication>
 #include <QDebug>
 #include "homewindow.h"
-#include "ui_homewindow.h" // Include the generated UI header file
+// #include "ui_homewindow.h" // Include the generated UI header file
 #include "statisticsmanager.h"
 
 StatisticsManager statsManager;
@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Game *game = new Game();
+    statsManager.passInstance(*game);
     // qDebug() << game->gameStatus.ans_word;
     MainWindow mainWindow(nullptr, game);
 

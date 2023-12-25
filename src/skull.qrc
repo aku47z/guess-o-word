@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>skull-solid.png</file>
+    </qresource>
+</RCC>

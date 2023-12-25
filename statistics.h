@@ -2,7 +2,6 @@
 #define STATISTICS_H
 
 #include <QDialog>
-#include "statisticsmanager.h"
 
 namespace Ui {
 class leaderboard;

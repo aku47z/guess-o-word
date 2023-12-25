@@ -56,3 +56,17 @@ void HomeWindow::on_pushButton_3_clicked()
     rw-> show();
 }
 
+
+void HomeWindow::on_pushButton_4_clicked()
+{
+    if (isEasy) {
+        // Change icon and functionality for difficult mode
+        ui->pushButton_4->setIcon(QIcon(":/skull-solid.png"));
+        statsManager.updateGameMode();
+    } else {
+        // Change icon and functionality for easy mode
+        ui->pushButton_4->setIcon(QIcon(":/face-smile-regular.png"));
+        statsManager.updateGameMode();
+    }
+    isEasy = !isEasy; // Toggle the state after the changes
+}

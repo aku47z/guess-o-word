@@ -50,7 +50,9 @@ RESOURCES += \
     src/playbotton.qrc \
     src/resource.qrc \
     src/rule.qrc \
-    src/rules.qrc
+    src/rules.qrc \
+    src/skull.qrc \
+    src/smileface.qrc
 
 FORMS += \
     homewindow.ui \

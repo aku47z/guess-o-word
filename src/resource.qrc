@@ -3,5 +3,4 @@
         <file>valid_answers.txt</file>
         <file>valid_words.txt</file>
     </qresource>
-    <qresource prefix="/icons"/>
 </RCC>

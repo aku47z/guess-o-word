@@ -1,28 +1,20 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef GAME_STATUS_H
+#define GAME_STATUS_H
 
+#include "load_data.h"
 #include "../gui/cell.h"
+#include <QStringList>
+
+extern StatisticsManager statsManager;
+
 #include <QFile>
 #include <QTextStream>
 #include <QVector>
 #include <QRandomGenerator>
 #include <QDebug>
-#include "statisticsmanager.h"
 
-extern StatisticsManager statsManager; //to update win statistic
-
-class Game
+struct GameStatus
 {
-public:
-    Game()
-    {
-        resetGame();
-    }
-    ~Game() {}
-
-    int handleKeyPress(const QString &keyText);
-    int handleEnter(); // 0: do nothing, 1: word not valid, 2: word valid then enter
-    int handleBackspace();
 
     QString ans_word;
     int cur_row;
@@ -41,17 +33,25 @@ public:
     bool is_game_won;
 
     QVector<QString> wordlist;
-    QVector<QString> answerlist;
 
-    void resetGame()
+    GameStatus() 
+    {
+        resetGameStatus();
+    }
+    ~GameStatus() {}
+
+    void resetGameStatus()
     {
         // Open text file
-        QFile file1(":/valid_words.txt");
+
+        //For difficulty
+        QFile file(statsManager.getFilepath());
+        qDebug()<<statsManager.getFilepath();
 
         // Check if the file opened successfully
-        if (file1.open(QIODevice::ReadOnly | QIODevice::Text))
+        if (file.open(QIODevice::ReadOnly | QIODevice::Text))
         {
-            QTextStream in(&file1);
+            QTextStream in(&file);
 
             // Copy words from the file to a QVector
             QString tempword;
@@ -62,43 +62,19 @@ public:
             }
 
             // Close the file
-            file1.close();
+            file.close();
+
+            // Select a random word
+            QRandomGenerator randomGenerator = QRandomGenerator::securelySeeded();
+            int randomIndex = randomGenerator.bounded(wordlist.size());
+            ans_word = wordlist[randomIndex];
         }
         else
         {
-            qDebug() << "Error opening file! Terminating program" << file1.errorString();
+            qDebug() << "Error opening file! Terminating program" << file.errorString();
             exit(EXIT_FAILURE);
         }
 
-        // Open text file
-        QFile file2(":/valid_answers.txt");
-
-        // Check if the file opened successfully
-        if (file2.open(QIODevice::ReadOnly | QIODevice::Text))
-        {
-            QTextStream in(&file2);
-
-            // Copy words from the file to a QVector
-            QString tempword;
-            while (!in.atEnd())
-            {
-                tempword = in.readLine();
-                answerlist.push_back(tempword);
-            }
-
-            // Close the file
-            file2.close();
-        }
-        else
-        {
-            qDebug() << "Error opening file! Terminating program" << file2.errorString();
-            exit(EXIT_FAILURE);
-        }
-
-        // Select a random word
-        QRandomGenerator randomGenerator = QRandomGenerator::securelySeeded();
-        int randomIndex = randomGenerator.bounded(answerlist.size());
-        ans_word = answerlist[randomIndex];
 
         cur_row = 0;
         cur_col = 0;
@@ -115,10 +91,6 @@ public:
         is_game_over = false;
         is_game_won = false;
     }
-
-private:
-    void _cmpWord();
-    int _isValidWord(); // 1: not valid, 2: valid
 };
 
-#endif // GAME_H
+#endif // GAME_STATUS_H

@@ -1,7 +1,6 @@
 #ifndef RULES_H
 #define RULES_H
 
-#include "homewindow.h"
 #include <QWidget>
 
 namespace Ui {

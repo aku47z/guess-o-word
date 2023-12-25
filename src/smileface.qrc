@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>face-smile-regular.png</file>
+    </qresource>
+</RCC>
