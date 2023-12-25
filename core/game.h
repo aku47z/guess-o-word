@@ -15,7 +15,6 @@ public:
     int handleEnter(); // 0: do nothing, 1: word not valid, 2: word valid then enter
     int handleBackspace();
 
-    QStringList getValidWords();
     void resetGame();
 
 private:

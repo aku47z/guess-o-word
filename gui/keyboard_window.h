@@ -23,15 +23,13 @@ public:
 
 private:
     QGridLayout *gridLayout;
-    int KeyMap2[26] = {16, 22, 4, 17, 19, 24, 20, 8, 14, 15,
-                       0, 18, 3, 5, 6, 7, 9, 10, 11,
-                       25, 23, 2, 21, 1, 13, 12};
-
     Cell *Cells[26];
     QChar keyMap[26] = {'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
                         'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
                         'Z', 'X', 'C', 'V', 'B', 'N', 'M'};
-
+    int KeyMap2[26] = {16, 22, 4, 17, 19, 24, 20, 8, 14, 15,
+                       0, 18, 3, 5, 6, 7, 9, 10, 11,
+                       25, 23, 2, 21, 1, 13, 12};
     Game *game;
     InputWindow *inputWindow;
 };

@@ -22,7 +22,7 @@ HomeWindow::~HomeWindow()
 
 void HomeWindow::on_pushButton_clicked()
 {
-    //this->hide();
+    // this->hide();
 
     //Update number of games played
     statsManager.updateGamesPlayed();
