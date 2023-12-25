@@ -9,21 +9,42 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>742</width>
-    <height>361</height>
+    <width>741</width>
+    <height>381</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(5, 29, 15);</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>40</y>
-     <width>151</width>
-     <height>151</height>
+     <x>240</x>
+     <y>60</y>
+     <width>200</width>
+     <height>200</height>
     </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>200</height>
+    </size>
    </property>
    <property name="styleSheet">
     <string notr="true">image: url(:/logo/GUESS-THE-WORD.jpg);</string>
@@ -33,35 +54,148 @@
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>220</y>
-     <width>80</width>
-     <height>24</height>
+     <x>261</x>
+     <y>271</y>
+     <width>50</width>
+     <height>50</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
    <property name="mouseTracking">
-    <bool>false</bool>
+    <bool>true</bool>
    </property>
    <property name="tabletTracking">
     <bool>false</bool>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	image: url(:/new/prefix1/playbotton.png);
+    background-color: rgb(34, 128, 168);
+    color: rgb(255, 255, 255);
+    padding: 5px 9px;
+    border-radius: 15px;
+}
+
+QPushButton:hover {
+    background-color: rgb(33, 138, 45);
+    color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgb(8, 74, 41);
+    color: rgb(255, 255, 255);
+}
+
+</string>
+   </property>
    <property name="text">
-    <string>Play</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>260</y>
-     <width>80</width>
-     <height>24</height>
+     <x>317</x>
+     <y>271</y>
+     <width>50</width>
+     <height>50</height>
     </rect>
    </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>50</horstretch>
+     <verstretch>50</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	image: url(:/new/prefix1/Frame_1leaderboard-removebg-preview.png);
+    background-color: rgb(34, 128, 168);
+    color: rgb(255, 255, 255);
+    padding: 5px 9px;
+    border-radius: 15px;
+}
+
+QPushButton:hover {
+    background-color: rgb(33, 138, 45);
+    color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgb(8, 74, 41);
+    color: rgb(255, 255, 255);
+}
+</string>
+   </property>
    <property name="text">
-    <string>Leaderboard</string>
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>373</x>
+     <y>271</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	image: url(:/new/prefix1/rules-removebg-preview.png);
+    background-color: rgb(34, 128, 168);
+    color: rgb(255, 255, 255);
+    padding: 5px 9px;
+    border-radius: 15px;
+}
+
+QPushButton:hover {
+    background-color: rgb(33, 138, 45);
+    color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: rgb(8, 74, 41);
+    color: rgb(255, 255, 255);
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

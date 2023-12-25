@@ -19,6 +19,7 @@ SOURCES += \
     gui/keyboard_window.cpp \
     gui/cell.cpp \
     core/game.cpp \
+    rules.cpp \
     statisticsmanager.cpp
 
 
@@ -31,6 +32,7 @@ HEADERS += \
     core/game.h \
     homewindow.h \
     leaderboard.h \
+    rules.h \
     statisticsmanager.h
 
 
@@ -43,12 +45,18 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    src/homeicon.qrc \
+    src/leaderboard.qrc \
     src/logo.qrc \
-    src/resource.qrc
+    src/playbotton.qrc \
+    src/resource.qrc \
+    src/rule.qrc \
+    src/rules.qrc
 
 FORMS += \
     homewindow.ui \
-    leaderboard.ui
+    leaderboard.ui \
+    rules.ui
 
 DISTFILES +=
 
