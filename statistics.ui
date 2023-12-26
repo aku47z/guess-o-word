@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>leaderboard</class>
- <widget class="QDialog" name="leaderboard">
+ <class>Statistics</class>
+ <widget class="QDialog" name="Statistics">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Leaderboard</string>
+   <string>Statistics</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

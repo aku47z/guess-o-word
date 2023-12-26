@@ -4,7 +4,7 @@
 #include <QDialog>
 
 namespace Ui {
-class leaderboard;
+class Statistics;
 }
 
 class leaderboard : public QDialog
@@ -23,7 +23,7 @@ private slots:
     void on_pushButton_clicked();
 
 private:
-    Ui::leaderboard *ui;
+    Ui::Statistics *ui;
 };
 
 #endif // STATISTICS_H

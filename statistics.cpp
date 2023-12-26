@@ -3,7 +3,7 @@
 
 leaderboard::leaderboard(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::leaderboard)
+    , ui(new Ui::Statistics)
 {
     ui->setupUi(this);
 }
