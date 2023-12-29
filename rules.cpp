@@ -1,10 +1,10 @@
 #include "rules.h"
-#include "ui_rules.h"
 #include "homewindow.h"
+#include "ui_rules.h"
 
-rules::rules(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::rules)
+rules::rules(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::rules)
 {
     ui->setupUi(this);
 
@@ -23,7 +23,7 @@ void rules::on_pushButton_clicked()
     this->hide();
 
     // Assuming HomeWindow is an instance of HomeWindow class, not a class itself
-    HomeWindow *homeWindow = qobject_cast<HomeWindow*>(parentWidget());
+    HomeWindow *homeWindow = qobject_cast<HomeWindow *>(parentWidget());
 
     if (homeWindow) {
         // Show the HomeWindow
