@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/logo">
-        <file>GUESS-THE-WORD.jpg</file>
+    <qresource prefix="/new/prefix1">
+        <file>Frame 3LOGO1.2.png</file>
     </qresource>
 </RCC>
