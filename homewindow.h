@@ -3,9 +3,9 @@
 #define HOMEWINDOW_H
 
 #include <QMainWindow>
+#include "core/game.h"
 #include "ui_homewindow.h"
 #include <gui/mainwindow.h>
-#include "core/game.h"
 
 class HomeWindow : public QMainWindow
 

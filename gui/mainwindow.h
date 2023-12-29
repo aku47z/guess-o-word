@@ -5,7 +5,6 @@
 #include <QLabel>
 #include "input_window.h"
 #include "keyboard_window.h"
-#include "../core/game.h"
 
 //QT_BEGIN_NAMESPACE
 //namespace Ui { class MainWindow; }

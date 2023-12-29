@@ -25,7 +25,7 @@ public:
     int getCurrentStreak() const;
     int getMaxStreak() const;
     QString getFilepath() const;
-    void passInstance(Game& game);
+    void passInstance(Game &game);
     int getDifficultyNumber() const;
 
 private:
@@ -33,8 +33,8 @@ private:
     int m_wins;
     int m_maxStreak;
     int m_currentStreak;
-    bool easy_mode=true;
-    Game* gameInstancePtr;
+    bool easy_mode = true;
+    Game *gameInstancePtr;
 };
 
 #endif // STATISTICSMANAGER_H
