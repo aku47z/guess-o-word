@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Statistics</class>
- <widget class="QDialog" name="Statistics">
+ <class>leaderboard</class>
+ <widget class="QDialog" name="leaderboard">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Statistics</string>
+   <string>Leaderboard</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -19,9 +19,9 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>580</x>
+     <x>600</x>
      <y>10</y>
-     <width>71</width>
+     <width>51</width>
      <height>50</height>
     </rect>
    </property>

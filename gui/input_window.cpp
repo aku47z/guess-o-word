@@ -1,7 +1,8 @@
 #include "input_window.h"
 #include "keyboard_window.h"
-
+#include "homewindow.h"
 #include <QDebug>
+#include <QMessageBox>
 
 InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWindow)
     : QWidget(parent), game(game), keyboardWindow(keyboardWindow)
@@ -23,6 +24,8 @@ InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWi
         }
     }
     setLayout(gridLayout);
+    game->resetGame();
+    resetInputWindow();
 }
 
 InputWindow::~InputWindow() //destructor
@@ -85,18 +88,50 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
             }
         }
 
-        /*
         if (game->is_game_over)
         {
-            if (game->is_game_won)
-                messageWindow->setMessage("You win!");
-            else
-                messageWindow->setMessage("You lose! The correct word is: " + game->ans_word.toUpper());
-        }
-        */
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Information);
+            msgBox.setWindowTitle("Game Over");
 
-        // if (signal != 0)
-        //     qDebug() << game->getValidWords();
+            if (game->is_game_won)
+            {
+                msgBox.setText("You win!");
+                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Retry);
+            }
+            else
+            {
+                msgBox.setText("You lose! The correct word is: " + game->ans_word.toUpper());
+                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Retry);
+            }
+
+            int result = msgBox.exec();
+
+            if (result == QMessageBox::Retry)
+            {
+                // User clicked "Play Again"
+                game->resetGame();
+                resetInputWindow();
+            }
+            else if (result == QMessageBox::Ok)
+            {
+                // User clicked "Exit" or closed the dialog
+                // Handle exit logic or close the application
+                this->close();
+                HomeWindow home;
+                home.show();
+                game->resetGame();
+                resetInputWindow();
+            }
+            else
+            {
+
+                // no key
+            }
+            game->resetGame();
+            resetInputWindow();
+        }
+
     }
     return;
 }

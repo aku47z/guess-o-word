@@ -1,13 +1,13 @@
 #ifndef RULES_H
 #define RULES_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class rules;
 }
 
-class rules : public QWidget
+class rules : public QDialog
 {
     Q_OBJECT
 
