@@ -9,13 +9,12 @@ InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWi
 //constructor
 {
     setFocusPolicy(Qt::StrongFocus);
-    // setGeometry(350, 100, 500, 600);
     setStyleSheet("background-color: #ffffff");
 
     gridLayout = new QGridLayout(this);
     for (int row = 0; row < 6; row++)
     {
-        for (int col = 0; col < 5; col++)
+        for (int col = 0; col < statsManager.getDifficultyNumber(); col++)
         {
             Cells[row][col] = new Cell(this);
             Cells[row][col] -> setStyle(50, 50, 0);
@@ -23,16 +22,15 @@ InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWi
             gridLayout->addWidget(Cells[row][col], row, col);
         }
     }
+    game -> resetGame();
     setLayout(gridLayout);
-    game->resetGame();
-    resetInputWindow();
 }
 
 InputWindow::~InputWindow() //destructor
 {
     for (int row = 0; row < 6; ++row)
     {
-        for (int col = 0; col < 5; ++col)
+        for (int col = 0; col < statsManager.getDifficultyNumber(); ++col)
         {
             delete Cells[row][col];
         }
@@ -81,7 +79,7 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
 
         if (signal == 2)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < statsManager.getDifficultyNumber(); i++)
             {
                 _flushColor(1, game->cur_row - 1, i);
                 keyboardWindow->flushKeyboard();
@@ -120,16 +118,12 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
                 this->close();
                 HomeWindow home;
                 home.show();
-                game->resetGame();
-                resetInputWindow();
             }
             else
             {
 
                 // no key
             }
-            game->resetGame();
-            resetInputWindow();
         }
 
     }
@@ -159,7 +153,7 @@ void InputWindow::resetInputWindow()
 {
     for (int row = 0; row < 6; row++)
     {
-        for (int col = 0; col < 5; col++)
+        for (int col = 0; col < statsManager.getDifficultyNumber(); col++)
         {
             Cells[row][col]->setLetter("");
             Cells[row][col]->color = Cell::Color::gray;

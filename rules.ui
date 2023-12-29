@@ -157,12 +157,6 @@ QPushButton:pressed {
     </layout>
    </item>
   </layout>
-  <zorder>label</zorder>
-  <zorder>horizontalSpacer</zorder>
-  <zorder>horizontalSpacer_2</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>horizontalSpacer_3</zorder>
-  <zorder>horizontalSpacer_4</zorder>
  </widget>
  <resources/>
  <connections/>
