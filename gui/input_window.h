@@ -29,7 +29,7 @@ private:
     void _flushColor(int signal, int row, int col);
 
     QGridLayout *gridLayout;
-    Cell *Cells[6][6];
+    Cell *Cells[6][5];
     Game *game;
     KeyboardWindow *keyboardWindow;
 };

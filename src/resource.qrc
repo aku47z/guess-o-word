@@ -2,6 +2,5 @@
     <qresource prefix="/">
         <file>valid_answers.txt</file>
         <file>valid_words.txt</file>
-        <file>hard_words.txt</file>
     </qresource>
 </RCC>
