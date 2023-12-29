@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
     HomeWindow homeWindow; // Create an instance of HomeWindow
     homeWindow.show();
 
+
     a.exec();
     // qDebug() << game->gameStatus.guessed_words;
     // qDebug() << game->gameStatus.ans_word;

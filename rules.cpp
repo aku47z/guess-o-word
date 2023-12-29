@@ -18,3 +18,4 @@ void rules::on_pushButton_clicked()
 {
     this->close();
 }
+
