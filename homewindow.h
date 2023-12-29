@@ -6,6 +6,7 @@
 #include "ui_homewindow.h"
 #include <gui/mainwindow.h>
 #include "core/game.h"
+#include <QWidget>
 
 class HomeWindow : public QMainWindow
 
@@ -21,10 +22,9 @@ public:
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    void on_pushButton_4_clicked();
 
     void on_pushButton_3_clicked();
-
-    void on_pushButton_4_clicked();
 
 private:
     Game *game;

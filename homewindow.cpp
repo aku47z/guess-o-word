@@ -4,6 +4,7 @@
 #include "statisticsmanager.h"
 #include "rules.h"
 
+
 extern StatisticsManager statsManager;
 
 
@@ -13,6 +14,7 @@ HomeWindow::HomeWindow(QWidget *parent)
     game(new Game())
 {
     ui->setupUi(this);
+    connect(ui->pushButton_3, &QPushButton::clicked, this, &HomeWindow::on_pushButton_3_clicked);
 
 }
 
@@ -52,10 +54,9 @@ void HomeWindow::on_pushButton_2_clicked()
 
 void HomeWindow::on_pushButton_3_clicked()
 {
-    rules *rw= new rules(this);
-    rw-> show();
+    rules rul;
+    rul.exec();
 }
-
 
 void HomeWindow::on_pushButton_4_clicked()
 {
@@ -72,3 +73,6 @@ void HomeWindow::on_pushButton_4_clicked()
     }
     isEasy = !isEasy; // Toggle the state after the changes
 }
+
+
+

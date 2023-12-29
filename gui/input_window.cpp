@@ -2,6 +2,7 @@
 #include "keyboard_window.h"
 
 #include <QDebug>
+#include <QMessageBox>
 
 InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWindow)
     : QWidget(parent), game(game), keyboardWindow(keyboardWindow)
@@ -85,18 +86,24 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
             }
         }
 
-        /*
+
         if (game->is_game_over)
         {
             if (game->is_game_won)
-                messageWindow->setMessage("You win!");
+            {
+                // You win!
+                QMessageBox::about(this, "Message", "You win!");
+                resetInputWindow();
+                game -> resetGame();
+            }
             else
-                messageWindow->setMessage("You lose! The correct word is: " + game->ans_word.toUpper());
+            {
+                // You lose! Display the correct word.
+                QMessageBox::about(this, "Message", "You lose! The correct word is: " + game->ans_word.toUpper());
+                resetInputWindow();
+                game -> resetGame();
+            }
         }
-        */
-
-        // if (signal != 0)
-        //     qDebug() << game->getValidWords();
     }
     return;
 }
