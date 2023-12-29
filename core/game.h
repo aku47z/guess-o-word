@@ -115,8 +115,6 @@ public:
         int randomIndex = randomGenerator.bounded(answerlist.size());
         ans_word = answerlist[randomIndex];
 
-        qDebug() << ans_word;
-
         cur_row = 0;
         cur_col = 0;
         cur_word = "";

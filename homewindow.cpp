@@ -63,12 +63,14 @@ void HomeWindow::on_pushButton_4_clicked()
         ui->pushButton_4->setStyleSheet(
             "background-color: red;padding: 5px 9px; border-radius: 15px;");
         statsManager.updateGameMode();
+        game -> resetGame();
     } else {
         // Change icon and functionality for easy mode
         ui->pushButton_4->setIcon(QIcon(":/face-smile-regular.png"));
         ui->pushButton_4->setStyleSheet(
             "background-color: rgb(34, 128, 168);padding: 5px 9px; border-radius: 15px;");
         statsManager.updateGameMode();
+        game -> resetGame();
     }
     isEasy = !isEasy; // Toggle the state after the changes
 }

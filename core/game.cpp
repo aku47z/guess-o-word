@@ -2,7 +2,7 @@
 
 void Game::_cmpWord()
 {
-    for (short i = 0; i < statsManager.getDifficultyNumber(); i++)
+    for (int i = 0; i < statsManager.getDifficultyNumber(); i++)
     {
         if (cur_word[i] == ans_word[i])
         {
@@ -10,7 +10,7 @@ void Game::_cmpWord()
         }
         else
         {
-            for (short j = 0; j < statsManager.getDifficultyNumber(); j++)
+            for (int j = 0; j < statsManager.getDifficultyNumber(); j++)
             {
                 if (cur_word[i] == ans_word[j])
                 {
@@ -83,8 +83,10 @@ int Game::handleEnter()
 {
     // 0: do nothing, 1: word not valid, 2: word valid then enter
     int x = 0;
-    if (is_game_over) return x;
-    if (cur_col < statsManager.getDifficultyNumber()) return x;
+    if (is_game_over)
+        return x;
+    if (cur_col < statsManager.getDifficultyNumber())
+        return x;
 
     x = _isValidWord();
     if (x != 2)
@@ -92,7 +94,10 @@ int Game::handleEnter()
 
     has_game_started = true;
     _cmpWord();
-    for (int i = 0; i < statsManager.getDifficultyNumber(); i++) prev_word_color[i] = cur_word_color[i];
+    for (int i = 0; i < statsManager.getDifficultyNumber(); i++)
+    {
+        prev_word_color[i] = cur_word_color[i];
+    }
     if (cur_word == ans_word)
     {
         statsManager.updateWins(); //update win stat
@@ -104,10 +109,14 @@ int Game::handleEnter()
         statsManager.updateCurrentStreak(); //reset current streak
         is_game_over = true;
     }
-    guessed_words.append(cur_word.toUpper());
+    //guessed_words.append(cur_word.toUpper());
     cur_row++;
     cur_col = 0;
+    //prev_word = cur_word;
     cur_word = "";
-    for (int i = 0; i < statsManager.getDifficultyNumber(); i++) cur_word_color[i] = Cell::Color::gray;
+    for (int i = 0; i < statsManager.getDifficultyNumber(); i++)
+    {
+        cur_word_color[i] = Cell::Color::gray;
+    }
     return x;
 }
