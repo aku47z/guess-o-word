@@ -1,5 +1,5 @@
 #include "homewindow.h"
-#include "gui/mainwindow.h"
+#include "mainwindow.h"
 #include "rules.h"
 #include "statistics.h"
 #include "statisticsmanager.h"

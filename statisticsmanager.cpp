@@ -1,5 +1,5 @@
 #include "statisticsmanager.h"
-#include "core/game.h"
+#include "game.h"
 
 StatisticsManager::StatisticsManager(QObject *parent)
     : QObject(parent)
@@ -42,15 +42,6 @@ void StatisticsManager::updateGameMode()
 {
     easy_mode = !easy_mode;
     gameInstancePtr->resetGame();
-}
-
-QString StatisticsManager::getFilepath() const
-{
-    if (easy_mode) {
-        return ":/valid_answers.txt";
-    } else {
-        return ":/valid_words.txt";
-    }
 }
 
 int StatisticsManager::getGamesPlayed() const

@@ -1,7 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../gui/cell.h"
+#include "cell.h"
 #include <QFile>
 #include <QTextStream>
 #include <QVector>

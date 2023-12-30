@@ -6,7 +6,7 @@
 #include <QKeyEvent>
 #include <QGridLayout>
 #include "cell.h"
-#include "../core/game.h"
+#include "game.h"
 
 class KeyboardWindow;
 

@@ -13,30 +13,27 @@ CONFIG += c++11
 SOURCES += \
     homewindow.cpp \
     main.cpp \
-    gui/mainwindow.cpp \
-    gui/input_window.cpp \
-    gui/keyboard_window.cpp \
-    gui/cell.cpp \
-    core/game.cpp \
+    mainwindow.cpp \
+    input_window.cpp \
+    keyboard_window.cpp \
+    cell.cpp \
+    game.cpp \
     rules.cpp \
     statistics.cpp \
     statisticsmanager.cpp
 
 
 HEADERS += \
-    gui/mainwindow.h \
-    gui/input_window.h \
-    gui/keyboard_window.h \
-    gui/cell.h \
-    core/game.h \
+    mainwindow.h \
+    mainwindow.h \
+    input_window.h \
+    keyboard_window.h \
+    cell.h \
+    game.h \
     homewindow.h \
     rules.h \
     statistics.h \
     statisticsmanager.h
-
-
-#FORMS += \
-#    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

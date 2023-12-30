@@ -1,5 +1,4 @@
 #include "rules.h"
-#include "homewindow.h"
 #include "ui_rules.h"
 
 rules::rules(QWidget *parent)
