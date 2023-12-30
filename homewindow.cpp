@@ -23,7 +23,7 @@ HomeWindow::~HomeWindow()
 
 void HomeWindow::on_pushButton_clicked()
 {
-    //this->hide();
+    this->hide();
 
     //Update number of games played
     statsManager.updateGamesPlayed();
@@ -38,8 +38,7 @@ void HomeWindow::on_pushButton_clicked()
 void HomeWindow::on_pushButton_2_clicked()
 {
     leaderboard leaderboard;
-    int numberOfGames = statsManager
-                            .getGamesPlayed(); //later change to use statisticsmanager to use values
+    int numberOfGames = statsManager.getGamesPlayed(); //later change to use statisticsmanager to use values
     int winCount = statsManager.getWins();
     int currentStreak = statsManager.getCurrentStreak();
     int maxStreak = statsManager.getMaxStreak();

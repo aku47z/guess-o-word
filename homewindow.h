@@ -18,9 +18,10 @@ public:
 
     Ui::HomeWindow *ui; // Add this line
 
-private slots:
-    void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+
+private slots:
+    void on_pushButton_clicked(); 
 
     void on_pushButton_3_clicked();
 

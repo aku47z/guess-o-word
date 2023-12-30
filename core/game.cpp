@@ -92,21 +92,22 @@ int Game::handleEnter()
 
     has_game_started = true;
     _cmpWord();
-    for (int i = 0; i < statsManager.getDifficultyNumber(); i++) prev_word_color[i] = cur_word_color[i];
+    for (int i = 0; i < statsManager.getDifficultyNumber(); i++)
+    {
+        prev_word_color[i] = cur_word_color[i];
+    }
     if (cur_word == ans_word)
     {
-        statsManager.updateWins(); //update win stat
         is_game_won = true;
         is_game_over = true;
     }
     if (cur_row == 5)
     {
-        statsManager.updateCurrentStreak(); //reset current streak
         is_game_over = true;
     }
-    guessed_words.append(cur_word.toUpper());
     cur_row++;
     cur_col = 0;
+    prev_word = cur_word;
     cur_word = "";
     for (int i = 0; i < statsManager.getDifficultyNumber(); i++) cur_word_color[i] = Cell::Color::gray;
     return x;

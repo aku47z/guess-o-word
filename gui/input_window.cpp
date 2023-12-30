@@ -3,6 +3,7 @@
 #include "homewindow.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QPushButton>
 
 InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWindow)
     : QWidget(parent), game(game), keyboardWindow(keyboardWindow)
@@ -89,40 +90,59 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
         if (game->is_game_over)
         {
             QMessageBox msgBox;
-            msgBox.setIcon(QMessageBox::Information);
             msgBox.setWindowTitle("Game Over");
+            QPushButton *replayButton = msgBox.addButton("Play Again", QMessageBox::AcceptRole);
+            QPushButton *statsButton = msgBox.addButton("Stats", QMessageBox::AcceptRole);
+            QPushButton *exitButton = msgBox.addButton("Exit", QMessageBox::AcceptRole);
 
             if (game->is_game_won)
             {
-                msgBox.setText("You win!");
-                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Retry);
+                statsManager.updateWins(); //update win streak
+                msgBox.setText("You win!\nPress OK to exit.");
             }
             else
             {
-                msgBox.setText("You lose! The correct word is: " + game->ans_word.toUpper());
-                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Retry);
+                statsManager.updateCurrentStreak(); //reset win streak
+                msgBox.setText("You lose! The correct word is: " + game->ans_word.toUpper() + "\nPress OK to exit.");
             }
 
-            int result = msgBox.exec();
+            msgBox.exec();
 
-            if (result == QMessageBox::Retry)
+            if (msgBox.clickedButton() == replayButton)
             {
-                // User clicked "Play Again"
+                statsManager.updateGamesPlayed();
                 game->resetGame();
                 resetInputWindow();
             }
-            else if (result == QMessageBox::Ok)
+            else if (msgBox.clickedButton() == statsButton)
             {
-                // User clicked "Exit" or closed the dialog
-                // Handle exit logic or close the application
-                this->close();
-                HomeWindow home;
-                home.show();
-            }
-            else
-            {
+                HomeWindow *temp;
+                temp -> on_pushButton_2_clicked();
 
-                // no key
+                QMessageBox msgBox2;
+                msgBox2.setWindowTitle("Game Over");
+                QPushButton *replayButton = msgBox2.addButton("Play Again", QMessageBox::AcceptRole);
+                QPushButton *exitButton = msgBox2.addButton("Exit", QMessageBox::AcceptRole);
+
+                msgBox2.exec();
+                if (msgBox2.clickedButton() == replayButton)
+                {
+                    // User clicked "Play Again"
+                    statsManager.updateGamesPlayed();
+                    game->resetGame();
+                    resetInputWindow();
+                    keyboardWindow->resetKeyboard();
+                }
+                else if (msgBox2.clickedButton() == exitButton)
+                {
+                    exit(0);
+                }
+
+            }
+
+            else if (msgBox.clickedButton() == exitButton)
+            {
+                exit(0);
             }
         }
 

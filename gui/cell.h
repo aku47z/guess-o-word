@@ -31,8 +31,6 @@ private:
 
     QLabel *letterLabel;
 
-    int type; // 1: input, 2: keyboard
-
 public:
     Cell(QWidget *parent = nullptr);
      ~Cell();

@@ -38,8 +38,7 @@ QString Cell::getGridColor() const
     {
     case Color::gray:
     {
-        if (type == 1) return "#ffffff";
-        else return "#d3d6da";
+        return "#d3d6da";
     }
     case Color::black: // only when type == 1
         return "#ffffff";
@@ -60,7 +59,7 @@ QString Cell::getBorderColor() const
     {
     case Color::gray:
         return "#d3d6da";
-    case Color::black: // only when type == 1
+    case Color::black:
         return "#878a8c";
     case Color::green:
         return "#6aaa64";
