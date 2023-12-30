@@ -44,10 +44,19 @@ void KeyboardWindow::setInputWindow(InputWindow *inputWindow)
 
 void KeyboardWindow::flushKeyboard()
 {
-    for (int i = 0; i < 26; i++)
+    for(int i = 0; i < statsManager.getDifficultyNumber(); i++)
     {
-        keys[i]->color = game->letter_color[KeyMap2[i]];
-        keys[i]->changeColor();
+        if (game->prev_word_color[i] == Cell::Color::darkGray)
+        {
+            for (int j = 0; j < 26; j++)
+            {
+                if(keyMap[j].toLower() == game -> prev_word[i])
+                {
+                    keys[j]->color = Cell::Color::darkGray;
+                    keys[j]->changeColor();
+                }
+            }
+        }
     }
 }
 
@@ -55,7 +64,6 @@ void KeyboardWindow::resetKeyboard()
 {
     for (int i = 0; i < 26; i++)
     {
-        keys[i]->color = Cell::Color::gray;
-        keys[i]->changeColor();
+        keys[i]->show();
     }
 }

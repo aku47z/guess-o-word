@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Leaderboard</string>
+   <string>Statistics</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -94,7 +94,7 @@ QPushButton:pressed {
     <string notr="true">font: 700 50pt &quot;Yu Gothic&quot;;</string>
    </property>
    <property name="text">
-    <string>STATISTICS</string>
+    <string>GAME STATS</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">

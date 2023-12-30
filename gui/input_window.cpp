@@ -3,19 +3,19 @@
 #include "homewindow.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QPushButton>
 
 InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWindow)
     : QWidget(parent), game(game), keyboardWindow(keyboardWindow)
 //constructor
 {
     setFocusPolicy(Qt::StrongFocus);
-    // setGeometry(350, 100, 500, 600);
     setStyleSheet("background-color: #ffffff");
 
     gridLayout = new QGridLayout(this);
     for (int row = 0; row < 6; row++)
     {
-        for (int col = 0; col < 5; col++)
+        for (int col = 0; col < statsManager.getDifficultyNumber(); col++)
         {
             Cells[row][col] = new Cell(this);
             Cells[row][col] -> setStyle(50, 50, 0);
@@ -23,16 +23,15 @@ InputWindow::InputWindow(QWidget *parent, Game *game, KeyboardWindow *keyboardWi
             gridLayout->addWidget(Cells[row][col], row, col);
         }
     }
+    game -> resetGame();
     setLayout(gridLayout);
-    game->resetGame();
-    resetInputWindow();
 }
 
 InputWindow::~InputWindow() //destructor
 {
     for (int row = 0; row < 6; ++row)
     {
-        for (int col = 0; col < 5; ++col)
+        for (int col = 0; col < statsManager.getDifficultyNumber(); ++col)
         {
             delete Cells[row][col];
         }
@@ -81,7 +80,7 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
 
         if (signal == 2)
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < statsManager.getDifficultyNumber(); i++)
             {
                 _flushColor(1, game->cur_row - 1, i);
                 keyboardWindow->flushKeyboard();
@@ -91,45 +90,60 @@ void InputWindow::_handleKeyInput(int _signal, const QString & key)
         if (game->is_game_over)
         {
             QMessageBox msgBox;
-            msgBox.setIcon(QMessageBox::Information);
             msgBox.setWindowTitle("Game Over");
+            QPushButton *replayButton = msgBox.addButton("Play Again", QMessageBox::AcceptRole);
+            QPushButton *statsButton = msgBox.addButton("Stats", QMessageBox::AcceptRole);
+            QPushButton *exitButton = msgBox.addButton("Exit", QMessageBox::AcceptRole);
 
             if (game->is_game_won)
             {
-                msgBox.setText("You win!");
-                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Retry);
+                statsManager.updateWins(); //update win streak
+                msgBox.setText("You win!\nPress OK to exit.");
             }
             else
             {
-                msgBox.setText("You lose! The correct word is: " + game->ans_word.toUpper());
-                msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Retry);
+                statsManager.updateCurrentStreak(); //reset win streak
+                msgBox.setText("You lose! The correct word is: " + game->ans_word.toUpper() + "\nPress OK to exit.");
             }
 
-            int result = msgBox.exec();
+            msgBox.exec();
 
-            if (result == QMessageBox::Retry)
+            if (msgBox.clickedButton() == replayButton)
             {
-                // User clicked "Play Again"
+                statsManager.updateGamesPlayed();
                 game->resetGame();
                 resetInputWindow();
             }
-            else if (result == QMessageBox::Ok)
+            else if (msgBox.clickedButton() == statsButton)
             {
-                // User clicked "Exit" or closed the dialog
-                // Handle exit logic or close the application
-                this->close();
-                HomeWindow home;
-                home.show();
-                game->resetGame();
-                resetInputWindow();
-            }
-            else
-            {
+                HomeWindow *temp;
+                temp -> on_pushButton_2_clicked();
 
-                // no key
+                QMessageBox msgBox2;
+                msgBox2.setWindowTitle("Game Over");
+                QPushButton *replayButton = msgBox2.addButton("Play Again", QMessageBox::AcceptRole);
+                QPushButton *exitButton = msgBox2.addButton("Exit", QMessageBox::AcceptRole);
+
+                msgBox2.exec();
+                if (msgBox2.clickedButton() == replayButton)
+                {
+                    // User clicked "Play Again"
+                    statsManager.updateGamesPlayed();
+                    game->resetGame();
+                    resetInputWindow();
+                    keyboardWindow->resetKeyboard();
+                }
+                else if (msgBox2.clickedButton() == exitButton)
+                {
+                    exit(0);
+                }
+
             }
-            game->resetGame();
-            resetInputWindow();
+
+            else if (msgBox.clickedButton() == exitButton)
+            {
+                exit(0);
+            }
         }
 
     }
@@ -159,7 +173,7 @@ void InputWindow::resetInputWindow()
 {
     for (int row = 0; row < 6; row++)
     {
-        for (int col = 0; col < 5; col++)
+        for (int col = 0; col < statsManager.getDifficultyNumber(); col++)
         {
             Cells[row][col]->setLetter("");
             Cells[row][col]->color = Cell::Color::gray;

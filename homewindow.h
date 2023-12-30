@@ -3,9 +3,9 @@
 #define HOMEWINDOW_H
 
 #include <QMainWindow>
+#include "core/game.h"
 #include "ui_homewindow.h"
 #include <gui/mainwindow.h>
-#include "core/game.h"
 
 class HomeWindow : public QMainWindow
 
@@ -18,9 +18,10 @@ public:
 
     Ui::HomeWindow *ui; // Add this line
 
-private slots:
-    void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+
+private slots:
+    void on_pushButton_clicked(); 
 
     void on_pushButton_3_clicked();
 
