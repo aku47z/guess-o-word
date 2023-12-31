@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QMainWindow>
 #include <QLabel>
+#include <QMainWindow>
 #include "input_window.h"
 #include "keyboard_window.h"
 
@@ -15,7 +15,7 @@ public:
     ~MainWindow();
 
 protected:
-    void resizeEvent(QResizeEvent* event) override;
+    void resizeEvent(QResizeEvent *event) override;
     void closeEvent(QCloseEvent *event) override;
 
 private:

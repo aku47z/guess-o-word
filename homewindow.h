@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include "game.h"
 #include "ui_homewindow.h"
+#include "rules.h"
 
 class HomeWindow : public QMainWindow
 
@@ -29,6 +30,7 @@ private slots:
 
 private:
     Game *game;
+    rules rule;
     bool isEasy = true;
 };
 

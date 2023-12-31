@@ -33,9 +33,9 @@ private:
 
 public:
     Cell(QWidget *parent = nullptr);
-     ~Cell();
+    ~Cell();
 
-    enum class Color {gray, black, green, yellow, darkGray};
+    enum class Color { gray, black, green, yellow, darkGray };
     Color color;
 
     void setStyle(int width, int height, int border_radius);
