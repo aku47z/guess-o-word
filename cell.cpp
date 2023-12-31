@@ -15,7 +15,6 @@ Cell::Cell(QWidget *parent)
     letterLabel->show();
 }
 
-
 Cell::~Cell()
 {
     delete letterLabel;
@@ -31,13 +30,10 @@ QString Cell::getLetter() const
     return letterLabel->text();
 }
 
-
 QString Cell::getGridColor() const
 {
-    switch (color)
-    {
-    case Color::gray:
-    {
+    switch (color) {
+    case Color::gray: {
         return "#d3d6da";
     }
     case Color::black: // only when type == 1
@@ -55,8 +51,7 @@ QString Cell::getGridColor() const
 
 QString Cell::getBorderColor() const
 {
-    switch (color)
-    {
+    switch (color) {
     case Color::gray:
         return "#d3d6da";
     case Color::black:
@@ -74,8 +69,7 @@ QString Cell::getBorderColor() const
 
 QString Cell::getLetterColor() const
 {
-    switch (color)
-    {
+    switch (color) {
     case Color::gray:
         return "#000000";
     case Color::black:
@@ -95,7 +89,9 @@ void Cell::setStyle(int width, int height, int border_radius)
 
     setFixedSize(style.width, style.height);
     setStyleSheet(QString("background-color: %1; border-radius: %2px; border: 3px solid %3")
-                  .arg(style.color).arg(style.border_radius).arg(style.border_color));
+                      .arg(style.color)
+                      .arg(style.border_radius)
+                      .arg(style.border_color));
 }
 
 void Cell::setLetterStyle(int pos_x, int pos_y, int width, int height, int font_size)
@@ -107,12 +103,19 @@ void Cell::setLetterStyle(int pos_x, int pos_y, int width, int height, int font_
     letterStyle.color = getLetterColor();
     letterStyle.font_size = font_size;
     letterLabel->setGeometry(letterStyle.pos_x, letterStyle.pos_y, width, height);
-    letterLabel->setStyleSheet(QString("background-color: %1; border: 0px; color: %2; font-size: %3px")
-                               .arg(style.color).arg(letterStyle.color).arg(letterStyle.font_size));
+    letterLabel->setStyleSheet(
+        QString("background-color: %1; border: 0px; color: %2; font-size: %3px")
+            .arg(style.color)
+            .arg(letterStyle.color)
+            .arg(letterStyle.font_size));
 }
 
 void Cell::changeColor()
 {
     setStyle(style.width, style.height, style.border_radius);
-    setLetterStyle(letterStyle.pos_x, letterStyle.pos_y, letterStyle.width, letterStyle.height, letterStyle.font_size);
+    setLetterStyle(letterStyle.pos_x,
+                   letterStyle.pos_y,
+                   letterStyle.width,
+                   letterStyle.height,
+                   letterStyle.font_size);
 }

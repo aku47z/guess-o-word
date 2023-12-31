@@ -1,19 +1,20 @@
 #include "mainwindow.h"
 
-#include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent, Game *game)
-    : QMainWindow(parent), game(game)
+    : QMainWindow(parent)
+    , game(game)
 {
     setWindowTitle("Guess-O-Word");
     setStyleSheet("background-color: #051d0f");
 
-    QWidget* centralWidget = new QWidget(this);
+    QWidget *centralWidget = new QWidget(this);
     setCentralWidget(centralWidget);
 
-    QHBoxLayout* outerLayout =  new QHBoxLayout(centralWidget);
-    QVBoxLayout* mainLayout = new QVBoxLayout();
+    QHBoxLayout *outerLayout = new QHBoxLayout(centralWidget);
+    QVBoxLayout *mainLayout = new QVBoxLayout();
 
     // main window components ----------------------------------------------
     inputWindow = new InputWindow(centralWidget, game, nullptr);
@@ -23,8 +24,8 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
     keyboardWindow->setInputWindow(inputWindow);
 
     // main layout --------------------------------------------------------
-    QSpacerItem* spacer2 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
-      
+    QSpacerItem *spacer2 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
     title = new QLabel("Guess-O-Word"); // title bar
     QFont font = title->font();
     font.setFamily("Consolas");
@@ -33,15 +34,14 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
     font.setBold(true);
     title->setFont(font);
 
-
     mainLayout->addWidget(title, 0, Qt::AlignCenter);
     mainLayout->addWidget(inputWindow, 0, Qt::AlignCenter);
     mainLayout->addWidget(keyboardWindow, 0, Qt::AlignCenter);
     mainLayout->addItem(spacer2);
 
     // outer layout ---------------------------------------------------------
-    QSpacerItem* leftSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-    QSpacerItem* rightSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    QSpacerItem *leftSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+    QSpacerItem *rightSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
     outerLayout->addItem(leftSpacer);
     outerLayout->addLayout(mainLayout);
@@ -58,15 +58,14 @@ MainWindow::~MainWindow()
     delete keyboardWindow;
 }
 
-void MainWindow::resizeEvent(QResizeEvent* event)
+void MainWindow::resizeEvent(QResizeEvent *event)
 {
     QMainWindow::resizeEvent(event);
 
     int minWidth = 600;
     int minHeight = 500;
     QSize currentSize = size();
-    if (currentSize.width() < minWidth || currentSize.height() < minHeight)
-    {
+    if (currentSize.width() < minWidth || currentSize.height() < minHeight) {
         resize(qMax(currentSize.width(), minWidth), qMax(currentSize.height(), minHeight));
     }
 }

@@ -1,8 +1,8 @@
-#include "mainwindow.h"
-#include "game.h"
 #include <QApplication>
 #include <QDebug>
+#include "game.h"
 #include "homewindow.h"
+#include "mainwindow.h"
 #include "statisticsmanager.h"
 
 StatisticsManager statsManager;

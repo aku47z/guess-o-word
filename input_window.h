@@ -1,10 +1,10 @@
 #ifndef INPUT_WINDOW_H
 #define INPUT_WINDOW_H
 
-#include <QWidget>
-#include <QLabel>
-#include <QKeyEvent>
 #include <QGridLayout>
+#include <QKeyEvent>
+#include <QLabel>
+#include <QWidget>
 #include "cell.h"
 #include "game.h"
 
@@ -15,7 +15,9 @@ class InputWindow : public QWidget
     Q_OBJECT
 
 public:
-    InputWindow(QWidget *parent = nullptr, Game *game = nullptr, KeyboardWindow *keyboardWindow = nullptr);
+    InputWindow(QWidget *parent = nullptr,
+                Game *game = nullptr,
+                KeyboardWindow *keyboardWindow = nullptr);
     ~InputWindow();
 
     void setKeyboardWindow(KeyboardWindow *keyboardWindow);
@@ -25,7 +27,7 @@ public:
     void resetInputWindow();
 
 private:
-    void _handleKeyInput(int _signal, const QString & key);
+    void _handleKeyInput(int _signal, const QString &key);
     void _flushColor(int signal, int row, int col);
 
     QGridLayout *gridLayout;
