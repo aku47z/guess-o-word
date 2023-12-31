@@ -41,7 +41,6 @@ void StatisticsManager::updateCurrentStreak()
 void StatisticsManager::updateGameMode()
 {
     easy_mode = !easy_mode;
-    gameInstancePtr->resetGame();
 }
 
 int StatisticsManager::getGamesPlayed() const

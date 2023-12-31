@@ -25,7 +25,6 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h \
-    mainwindow.h \
     input_window.h \
     keyboard_window.h \
     cell.h \
