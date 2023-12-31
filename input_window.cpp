@@ -91,7 +91,7 @@ void InputWindow::_handleKeyInput(int _signal, const QString &key)
                 statsManager.updateWins(); //update win streak
                 msgBox.setText("You win!");
             } else {
-                statsManager.updateCurrentStreak(); //reset win streak
+                statsManager.resetCurrentStreak(); //reset win streak
                 msgBox.setText("You lose! The correct word is: " + game->ans_word.toUpper());
             }
 

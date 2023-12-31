@@ -12,14 +12,11 @@ class StatisticsManager : public QObject
 public:
     explicit StatisticsManager(QObject *parent = nullptr);
 
-    // Functions to update individual statistics
     void updateGamesPlayed();
     void updateWins();
     void updateMaxStreak();
-    void updateCurrentStreak();
+    void resetCurrentStreak();
     void updateGameMode();
-
-    // Accessor functions for statistics
     int getGamesPlayed() const;
     int getWins() const;
     int getCurrentStreak() const;

@@ -7,19 +7,15 @@ StatisticsManager::StatisticsManager(QObject *parent)
     , m_wins(0)
     , m_maxStreak(0)
     , m_currentStreak(0)
-{
-    //constructor if needed
-}
+{}
 
 void StatisticsManager::updateGamesPlayed()
 {
-    // Update games played
     m_gamesPlayed++;
 }
 
 void StatisticsManager::updateWins()
 {
-    // Update no of wins
     m_currentStreak++;
     updateMaxStreak();
     m_wins++;
@@ -32,9 +28,8 @@ void StatisticsManager::updateMaxStreak()
         m_maxStreak = m_currentStreak;
 }
 
-void StatisticsManager::updateCurrentStreak()
+void StatisticsManager::resetCurrentStreak()
 {
-    // Reset current streak
     m_currentStreak = 0;
 }
 

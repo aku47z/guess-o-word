@@ -13,7 +13,7 @@ leaderboard::~leaderboard()
     delete ui;
 }
 
-void leaderboard::on_pushButton_clicked() //close button
+void leaderboard::on_pushButton_clicked()
 {
     this->close();
 }
