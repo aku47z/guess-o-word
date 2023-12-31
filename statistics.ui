@@ -39,7 +39,8 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QPushButton {
-	image: url(:/new/prefix1/homeicon.png);
+	
+	image: url(:/new/prefix1/download-removebg-preview.png);
     background-color: rgb(34, 128, 168);
     color: rgb(255, 255, 255);
     padding: 5px 9px;
