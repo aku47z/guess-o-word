@@ -29,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent, Game *game)
     title = new QLabel("Guess-O-Word"); // title bar
     QFont font = title->font();
     font.setFamily("Consolas");
+    QPalette palette = title->palette();
+    palette.setColor(QPalette::WindowText, Qt::white);
+    title->setPalette(palette);
+    font.setFamily("Consolas");
 
     font.setPointSize(50);
     font.setBold(true);
